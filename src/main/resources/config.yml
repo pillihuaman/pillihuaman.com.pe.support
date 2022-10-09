@@ -1,0 +1,35 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 7130
+  adminConnectors:
+    - type: http
+      port: 17130
+  requestLog:
+    appenders: []
+serviceName: contribuyentems.registro.gre.regenvios.backend
+
+# MongoDB
+mongodb:
+  conexiones:
+    - credenciales:
+        usuario: "usgreadm"
+        clave: "clave20"
+      dsname: "dcbdgre"
+      nodos:
+        - host: "localhost"
+          port: 27017
+        - host: "mdbcpesspp1.sunat.peru"
+          port: 27018
+        - host: "mdbcpesspp2.sunat.peru"
+          port: 27019
+      database: "bdGre"
+      replicaset: "rentaRs0"
+      readpreference: "primary"
+      writeconcern: "w1"
+      poolconfig:
+        maxPoolSize: 200
+        minPoolSize: 0
+      pojos:
+        - "pillihuaman.com.dataAccessLib"
+            
