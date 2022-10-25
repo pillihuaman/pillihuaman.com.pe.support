@@ -1,10 +1,11 @@
 package pillihuaman.com.Help;
 
+import pillihuaman.com.basebd.product.domain.Product;
+import pillihuaman.com.basebd.user.domain.User;
 import pillihuaman.com.model.request.ReqProduct;
 import pillihuaman.com.model.request.ReqUser;
 import pillihuaman.com.model.response.RespUser;
-import pillihuaman.com.product.domain.Product;
-import pillihuaman.com.user.domain.User;
+
 
 
 public class ConvertClass {

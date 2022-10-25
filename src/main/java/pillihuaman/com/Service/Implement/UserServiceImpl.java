@@ -6,17 +6,16 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import pillihuaman.com.Help.ConvertClass;
 import pillihuaman.com.Service.UserService;
+import pillihuaman.com.basebd.user.domain.User;
+import pillihuaman.com.basebd.user.domain.dao.implement.UserDaoImplement;
 import pillihuaman.com.model.request.ReqUser;
 import pillihuaman.com.model.response.RespBase;
 import pillihuaman.com.model.response.RespUser;
 import pillihuaman.com.security.PasswordUtils;
-import pillihuaman.com.user.domain.User;
-import pillihuaman.com.user.domain.dao.implement.UserDaoImplement;
 
 @Service
 public class UserServiceImpl implements UserService {

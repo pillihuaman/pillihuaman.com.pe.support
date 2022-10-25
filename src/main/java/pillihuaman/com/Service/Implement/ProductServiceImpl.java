@@ -17,12 +17,12 @@ import com.mongodb.client.MongoDatabase;
 
 import pillihuaman.com.Help.ConvertClass;
 import pillihuaman.com.Service.ProductService;
+import pillihuaman.com.basebd.product.domain.Product;
+import pillihuaman.com.basebd.product.domain.dao.ProductSupportDAO;
 import pillihuaman.com.model.request.ReqBase;
 import pillihuaman.com.model.request.ReqProduct;
 import pillihuaman.com.model.response.RespBase;
 import pillihuaman.com.model.response.RespProduct;
-import pillihuaman.com.product.domain.Product;
-import pillihuaman.com.product.domain.dao.ProductSupportDAO;
 import pillihuaman.com.security.MyJsonWebToken;
 
 @Component

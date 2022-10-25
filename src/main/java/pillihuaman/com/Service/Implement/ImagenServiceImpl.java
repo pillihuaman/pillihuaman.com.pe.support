@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import pillihuaman.com.Service.ImagenService;
-import pillihuaman.com.imagen.domain.DetailImage;
-import pillihuaman.com.imagen.domain.Imagen;
-import pillihuaman.com.imagen.domain.dao.ImagenSupportDAO;
+import pillihuaman.com.basebd.imagen.domain.DetailImage;
+import pillihuaman.com.basebd.imagen.domain.Imagen;
+import pillihuaman.com.basebd.imagen.domain.dao.ImagenSupportDAO;
 import pillihuaman.com.model.request.ReqBase;
 import pillihuaman.com.model.request.ReqImagen;
 import pillihuaman.com.model.response.RespBase;

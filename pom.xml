@@ -15,7 +15,18 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<dependencies>
-
+<dependency>
+			<groupId>pillihuaman-com-pe</groupId>
+            <artifactId>pillihuaman-basebd</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+              <scope>compile</scope>
+		</dependency>
+				<dependency>
+				<groupId>pillihuaman-com-base-pe</groupId>
+               <artifactId>pillihuaman-base</artifactId>
+               <version>0.0.1-SNAPSHOT</version>
+              <scope>compile</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.sql2o</groupId>
 			<artifactId>sql2o</artifactId>
