@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -30,10 +30,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import pillihuaman.com.Help.Constants;
 import pillihuaman.com.Help.JsonUtil;
 import pillihuaman.com.Service.ImagenService;
-import pillihuaman.com.model.request.ReqBase;
-import pillihuaman.com.model.request.ReqImagen;
-import pillihuaman.com.model.response.RespBase;
-import pillihuaman.com.model.response.RespImagen;
+
+import pillihuaman.com.base.request.ReqBase;
+import pillihuaman.com.base.request.ReqImagen;
+import pillihuaman.com.base.response.RespBase;
+import pillihuaman.com.base.response.RespImagen;
 import pillihuaman.com.security.MyJsonWebToken;
 
 @RestController
@@ -60,7 +61,7 @@ public class ImagenController {
 	@PostMapping(path = { Constants.BASE_ENDPOINT + "/imagen/saveImagenProduct" }, produces = {
 			MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<RespBase<RespImagen>> saveImagen(@RequestParam("archivo") MultipartFile[] archivo,
-			@RequestParam("imagenData") String imagenData) {
+														   @RequestParam("imagenData") String imagenData) {
 		ReqBase<ReqImagen> request = new ReqBase<ReqImagen>();
 		log.info("imagenData:"+imagenData);
 		ReqImagen requser = JsonUtil.toObject(imagenData, ReqImagen.class);

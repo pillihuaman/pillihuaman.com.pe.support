@@ -8,11 +8,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+
 
 import pillihuaman.com.Service.UserService;
-import pillihuaman.com.model.response.RespBase;
-import pillihuaman.com.model.response.RespUser;
+import pillihuaman.com.base.response.RespBase;
+import pillihuaman.com.base.response.RespUser;
 
 @Component
 public class JwtUserDetailsService implements UserDetailsService {

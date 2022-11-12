@@ -11,13 +11,14 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import pillihuaman.com.Service.ImagenService;
+import pillihuaman.com.base.request.ReqBase;
+import pillihuaman.com.base.request.ReqImagen;
+import pillihuaman.com.base.response.RespBase;
+import pillihuaman.com.base.response.RespImagen;
 import pillihuaman.com.basebd.imagen.domain.DetailImage;
 import pillihuaman.com.basebd.imagen.domain.Imagen;
 import pillihuaman.com.basebd.imagen.domain.dao.ImagenSupportDAO;
-import pillihuaman.com.model.request.ReqBase;
-import pillihuaman.com.model.request.ReqImagen;
-import pillihuaman.com.model.response.RespBase;
-import pillihuaman.com.model.response.RespImagen;
+
 import pillihuaman.com.security.MyJsonWebToken;
 
 @Component

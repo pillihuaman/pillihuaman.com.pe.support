@@ -25,8 +25,8 @@ import com.fasterxml.jackson.datatype.jsr310.ser.InstantSerializer;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import pillihuaman.com.Help.RoutingKey;
-import pillihuaman.com.model.response.RespBase;
+import pillihuaman.com.base.response.RespBase;
+
 
 @Component
 public class AuditEndpointInterceptor extends HandlerInterceptorAdapter {

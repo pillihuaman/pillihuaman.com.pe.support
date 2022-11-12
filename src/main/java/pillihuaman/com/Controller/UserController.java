@@ -19,10 +19,10 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import pillihuaman.com.Help.Constants;
 import pillihuaman.com.Service.UserService;
-import pillihuaman.com.model.request.ReqBase;
-import pillihuaman.com.model.request.ReqUser;
-import pillihuaman.com.model.response.RespBase;
-import pillihuaman.com.model.response.RespUser;
+import pillihuaman.com.base.request.ReqBase;
+import pillihuaman.com.base.request.ReqUser;
+import pillihuaman.com.base.response.RespBase;
+import pillihuaman.com.base.response.RespUser;
 import pillihuaman.com.security.MyJsonWebToken;
 @RestController
 @Tag(name = "User", description = "")

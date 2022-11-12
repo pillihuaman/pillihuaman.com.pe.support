@@ -15,14 +15,15 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
-import pillihuaman.com.Help.ConvertClass;
+
 import pillihuaman.com.Service.ProductService;
+import pillihuaman.com.base.request.ReqBase;
+import pillihuaman.com.base.request.ReqProduct;
+import pillihuaman.com.base.response.RespBase;
+import pillihuaman.com.base.response.RespProduct;
+import pillihuaman.com.basebd.help.ConvertClass;
 import pillihuaman.com.basebd.product.domain.Product;
 import pillihuaman.com.basebd.product.domain.dao.ProductSupportDAO;
-import pillihuaman.com.model.request.ReqBase;
-import pillihuaman.com.model.request.ReqProduct;
-import pillihuaman.com.model.response.RespBase;
-import pillihuaman.com.model.response.RespProduct;
 import pillihuaman.com.security.MyJsonWebToken;
 
 @Component
@@ -39,8 +40,8 @@ public class ProductServiceImpl implements ProductService {
 			request.getData();
 			Product tblproduct = new Product();
 			tblproduct = ConvertClass.ProductDtoToProductTbl(request.getData());
-			
-		
+
+
 			List<Product> list = productSupportDAO
 					.getCorrelativeProduct(new Product());
 			if (list != null && list.size() > 0) {
@@ -55,7 +56,7 @@ public class ProductServiceImpl implements ProductService {
 			response.setPayload(new RespProduct());
 		} catch (Exception e) {
 
-			
+
 			response.getStatus().setSuccess(Boolean.FALSE);
 			throw e;
 
@@ -66,26 +67,15 @@ public class ProductServiceImpl implements ProductService {
 
 	}
 
-	/*
-	 * private int idProduct;
-	 * 
-	 * private String description;
-	 * 
-	 * 
-	 * private Date expirationDate;
-	 * 
-	 * 
-	 * private BigDecimal idImagen;
-	 * 
-	 * private BigDecimal idPrice;
-	 * 
-	 * private BigDecimal idSystem;
-	 * 
-	 * private BigDecimal idType;
-	 * 
-	 * 
-	 * private BigDecimal idUser;
-	 */
+	@Override
+	public RespBase<List<RespProduct>> listProductbyUser(MyJsonWebToken token, ReqBase<ReqProduct> request) {
+		Product pro= new Product();
+		pro=ConvertClass.ProductDtoToProductTbl(request.getData());
+		RespBase<List<RespProduct>> res = new RespBase<>();
+		res.setPayload(ConvertClass.listProductoRespProduct(productSupportDAO.getallProductbyUser(pro)));
+		return res;
+	}
+
 
 	public void mongodb(Product tblproduct) {
 

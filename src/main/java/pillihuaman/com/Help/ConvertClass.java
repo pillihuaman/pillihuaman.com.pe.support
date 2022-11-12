@@ -1,10 +1,11 @@
 package pillihuaman.com.Help;
 
+import pillihuaman.com.base.request.ReqProduct;
+import pillihuaman.com.base.request.ReqUser;
+import pillihuaman.com.base.response.RespUser;
 import pillihuaman.com.basebd.product.domain.Product;
 import pillihuaman.com.basebd.user.domain.User;
-import pillihuaman.com.model.request.ReqProduct;
-import pillihuaman.com.model.request.ReqUser;
-import pillihuaman.com.model.response.RespUser;
+
 
 
 
@@ -40,7 +41,7 @@ public static  User	userDtoToUserTbl(ReqUser request){
 	return resp;
 	
 }
-public static  RespUser 	respUserDtoToUser(User request){
+public static RespUser respUserDtoToUser(User request){
 	RespUser resp= new RespUser();
 	
 	resp.setAlias(request.getAlias());

@@ -1,8 +1,9 @@
 package pillihuaman.com.Service;
 
-import pillihuaman.com.model.request.ReqUser;
-import pillihuaman.com.model.response.RespBase;
-import pillihuaman.com.model.response.RespUser;
+import pillihuaman.com.base.request.ReqUser;
+import pillihuaman.com.base.response.RespBase;
+import pillihuaman.com.base.response.RespUser;
+
 
 public interface UserService {
 	RespBase<RespUser> getUserByMail(String mail);
