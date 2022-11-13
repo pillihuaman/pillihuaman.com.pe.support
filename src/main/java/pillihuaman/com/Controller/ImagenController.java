@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -28,13 +27,16 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import pillihuaman.com.Help.Constants;
-import pillihuaman.com.Help.JsonUtil;
+
 import pillihuaman.com.Service.ImagenService;
 
 import pillihuaman.com.base.request.ReqBase;
 import pillihuaman.com.base.request.ReqImagen;
+import pillihuaman.com.base.request.ReqImagenByProduct;
 import pillihuaman.com.base.response.RespBase;
 import pillihuaman.com.base.response.RespImagen;
+import pillihuaman.com.basebd.help.JsonUtil;
+import pillihuaman.com.basebd.help.MaestrosUtilidades;
 import pillihuaman.com.security.MyJsonWebToken;
 
 @RestController
@@ -42,51 +44,62 @@ import pillihuaman.com.security.MyJsonWebToken;
 //@RequestMapping("Product/")
 
 public class ImagenController {
-	@Autowired
-	private HttpServletRequest httpServletRequest;
-	@Autowired
-	private ImagenService imagenService;
-	@Autowired(required=false)
-	protected final Log log = LogFactory.getLog(getClass());
+    @Autowired
+    private HttpServletRequest httpServletRequest;
+    @Autowired
+    private ImagenService imagenService;
+    @Autowired(required = false)
+    protected final Log log = LogFactory.getLog(getClass());
 
-	@Operation(summary = "Create Imagen", description = "Create Imagen", tags = { "" }, security = {
-			@SecurityRequirement(name = Constants.BEARER_JWT) })
-	@ApiResponses(value = {
-			@ApiResponse(responseCode = Constants.SERVER_200, description = Constants.OPERACION_EXITOSA),
-			@ApiResponse(responseCode = Constants.SERVER_400, description = Constants.ERROR_VALIDACION, content = {
-					@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class)) }),
-			@ApiResponse(responseCode = Constants.SERVER_500, description = Constants.ERROR_INTERNO, content = {
-					@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class)) }) })
+    @Operation(summary = "Create Imagen", description = "Create Imagen", tags = {""}, security = {
+            @SecurityRequirement(name = Constants.BEARER_JWT)})
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = Constants.SERVER_200, description = Constants.OPERACION_EXITOSA),
+            @ApiResponse(responseCode = Constants.SERVER_400, description = Constants.ERROR_VALIDACION, content = {
+                    @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))}),
+            @ApiResponse(responseCode = Constants.SERVER_500, description = Constants.ERROR_INTERNO, content = {
+                    @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))})})
 
-	@PostMapping(path = { Constants.BASE_ENDPOINT + "/imagen/saveImagenProduct" }, produces = {
-			MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<RespBase<RespImagen>> saveImagen(@RequestParam("archivo") MultipartFile[] archivo,
-														   @RequestParam("imagenData") String imagenData) {
-		ReqBase<ReqImagen> request = new ReqBase<ReqImagen>();
-		log.info("imagenData:"+imagenData);
-		ReqImagen requser = JsonUtil.toObject(imagenData, ReqImagen.class);
+    @PostMapping(path = {Constants.BASE_ENDPOINT + "/imagen/saveImagenProduct"}, produces = {
+            MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<RespBase<RespImagen>> saveImagen(@RequestParam("archivo") MultipartFile[] archivo,
+                                                           @RequestParam("imagenData") String imagenData) {
+        ReqBase<ReqImagen> request = new ReqBase<ReqImagen>();
+        log.info("imagenData:" + imagenData);
+        ReqImagen requser = JsonUtil.toObject(imagenData, ReqImagen.class);
 
-		request.setData(requser);
-		MyJsonWebToken jwt = (MyJsonWebToken) httpServletRequest.getAttribute("jwt");
-		RespBase<RespImagen> response = imagenService.saveImagen(jwt, request,archivo);
-		return ResponseEntity.ok(response);
-	}
+        request.setData(requser);
+        MyJsonWebToken jwt = (MyJsonWebToken) httpServletRequest.getAttribute("jwt");
+        RespBase<RespImagen> response = imagenService.saveImagen(jwt, request, archivo);
+        return ResponseEntity.ok(response);
+    }
 
-	@Operation(summary = "get top imagen", description = "get top imagen", tags = { "" }, security = {
-			@SecurityRequirement(name = Constants.BEARER_JWT) })
-	@ApiResponses(value = {
-			@ApiResponse(responseCode = Constants.SERVER_200, description = Constants.OPERACION_EXITOSA),
-			@ApiResponse(responseCode = Constants.SERVER_400, description = Constants.ERROR_VALIDACION, content = {
-					@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class)) }),
-			@ApiResponse(responseCode = Constants.SERVER_500, description = Constants.ERROR_INTERNO, content = {
-					@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class)) }) })
-	@GetMapping(path = { Constants.BASE_ENDPOINT + "/getTopImagen" }, produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<RespBase<Object>> getTopImagen(@PathVariable String access,
-			@Valid @RequestBody ReqBase<ReqImagen> request) {
+    @Operation(summary = "get top imagen", description = "get top imagen", tags = {""}, security = {
+            @SecurityRequirement(name = Constants.BEARER_JWT)})
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = Constants.SERVER_200, description = Constants.OPERACION_EXITOSA),
+            @ApiResponse(responseCode = Constants.SERVER_400, description = Constants.ERROR_VALIDACION, content = {
+                    @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))}),
+            @ApiResponse(responseCode = Constants.SERVER_500, description = Constants.ERROR_INTERNO, content = {
+                    @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))})})
+    @GetMapping(path = {Constants.BASE_ENDPOINT + "/getTopImagen"}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<RespBase<Object>> getTopImagen(@PathVariable String access,
+                                                         @Valid @RequestBody ReqBase<ReqImagen> request) {
 
-		MyJsonWebToken jwt = (MyJsonWebToken) httpServletRequest.getAttribute("jwt");
-		// RespBase<Object> response = productService.SaveProduct( jwt,request);
-		return ResponseEntity.ok(null);
-	}
+        MyJsonWebToken jwt = (MyJsonWebToken) httpServletRequest.getAttribute("jwt");
+        // RespBase<Object> response = productService.SaveProduct( jwt,request);
+        return ResponseEntity.ok(null);
+    }
+
+    @PostMapping(path = {Constants.BASE_ENDPOINT + "/imagen/saveImagenByProduct"}, produces = {
+            MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<RespBase<RespImagen>> saveImagenByProduct(
+            @RequestBody ReqImagenByProduct reqImagenByProduct) {
+        log.info("reqImagenByProduct:" + MaestrosUtilidades.getJson(reqImagenByProduct));
+        MyJsonWebToken jwt = (MyJsonWebToken) httpServletRequest.getAttribute("jwt");
+        RespBase<RespImagen> response = imagenService.saveImagenByProduct(jwt, reqImagenByProduct);
+        return ResponseEntity.ok(response);
+    }
+
 
 }
