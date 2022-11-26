@@ -1,10 +1,9 @@
 package pillihuaman.com.security;
 
-import java.io.Serializable;
-
+import lombok.Getter;
 import org.jboss.resteasy.jwt.JsonWebToken;
 
-import lombok.Getter;
+import java.io.Serializable;
 
 @SuppressWarnings("serial")
 @Getter

@@ -1,10 +1,5 @@
 package pillihuaman.com.Service.Implement;
 
-import java.util.Base64;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.bson.Document;
@@ -12,7 +7,6 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-
 import pillihuaman.com.Service.ImagenService;
 import pillihuaman.com.base.request.ImagenDetail;
 import pillihuaman.com.base.request.ReqBase;
@@ -24,8 +18,12 @@ import pillihuaman.com.basebd.help.AuditEntity;
 import pillihuaman.com.basebd.imagen.domain.DetailImage;
 import pillihuaman.com.basebd.imagen.domain.Imagen;
 import pillihuaman.com.basebd.imagen.domain.dao.ImagenSupportDAO;
-
 import pillihuaman.com.security.MyJsonWebToken;
+
+import java.util.Base64;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
 @Component
 public class ImagenServiceImpl implements ImagenService {
@@ -94,6 +92,10 @@ public class ImagenServiceImpl implements ImagenService {
             tbImg.setName(reqImagenByProduct.getName());
             tbImg.setIdProduct(reqImagenByProduct.getIdProduct());
             tbImg.setUniqueKeyHash(reqImagenByProduct.getUniqueKeyHash());
+            tbImg.setCountRanking(0);
+            tbImg.setClickCount(0);
+
+
             AuditEntity adu= new AuditEntity();
             adu.setFecRegis(new Date());
             adu.setCodUsuRegis("ZPH");
@@ -125,8 +127,11 @@ public class ImagenServiceImpl implements ImagenService {
                     detIma.setFiles(decodedImagen);
                     detIma.setIdHeadImagen(idImagen);
                     detIma.setIdDetail(_objectId);
+                    detIma.setCountRanking(0);
+                    detIma.setClickCount(0);
                     detIma.setUniqueKeyHash(reqImagenByProduct.getUniqueKeyHash());
                     detIma.setName(multipartFile.getName());
+                    detIma.setIndex(multipartFile.getIndex());
                     imagenSupportDAO.saveImagenFile(detIma);
                 }
 

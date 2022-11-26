@@ -1,7 +1,6 @@
 package pillihuaman.com.Service;
+
 import org.springframework.web.multipart.MultipartFile;
-
-
 import pillihuaman.com.base.request.ReqBase;
 import pillihuaman.com.base.request.ReqImagen;
 import pillihuaman.com.base.request.ReqImagenByProduct;

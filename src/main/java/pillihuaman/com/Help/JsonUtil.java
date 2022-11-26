@@ -1,8 +1,8 @@
 package pillihuaman.com.Help;
 
-import java.lang.reflect.Type;
-
 import com.google.gson.Gson;
+
+import java.lang.reflect.Type;
 
 public class JsonUtil {
 

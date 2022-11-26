@@ -1,18 +1,16 @@
 package pillihuaman.com;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-
-
 import pillihuaman.com.Service.UserService;
 import pillihuaman.com.base.response.RespBase;
 import pillihuaman.com.base.response.RespUser;
+
+import java.util.ArrayList;
 
 @Component
 public class JwtUserDetailsService implements UserDetailsService {
