@@ -12,32 +12,21 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-<<<<<<< HEAD
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import pillihuaman.com.Help.Constants;
-import pillihuaman.com.Service.ImagenService;
-import pillihuaman.com.base.request.ReqBase;
-import pillihuaman.com.base.request.ReqImagen;
-import pillihuaman.com.base.request.ReqImagenByProduct;
-=======
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import pillihuaman.com.Help.Constants;
 import pillihuaman.com.Service.ImagenService;
->>>>>>> 8059a459b9d358fb8b0353862aaa97268c3f9478
+
 import pillihuaman.com.base.response.RespBase;
 import pillihuaman.com.base.response.RespImagenGeneral;
 import pillihuaman.com.security.MyJsonWebToken;
 
 import javax.servlet.http.HttpServletRequest;
-<<<<<<< HEAD
-import javax.validation.Valid;
-=======
+
 import javax.ws.rs.QueryParam;
 import java.util.List;
->>>>>>> 8059a459b9d358fb8b0353862aaa97268c3f9478
+
 
 @RestController
 @Tag(name = "Imagen", description = "")
