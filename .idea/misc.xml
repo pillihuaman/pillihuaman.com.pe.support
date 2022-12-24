@@ -5,6 +5,11 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../../../pillihuaman-com-pe-basebd-lib/pom.xml" />
+        <option value="$PROJECT_DIR$/../pillihuaman-com-pe-security-app/pom.xml" />
+        <option value="$PROJECT_DIR$/../pillihuaman-imagen-app/pom.xml" />
+        <option value="$PROJECT_DIR$/../pillihuaman-com-pe-support/pom.xml" />
+        <option value="C:/pillihuaman.com.base.lib/pom.xml" />
       </list>
     </option>
   </component>
