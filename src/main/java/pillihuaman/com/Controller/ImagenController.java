@@ -12,18 +12,21 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pillihuaman.com.Help.Constants;
 import pillihuaman.com.Service.ImagenService;
-
+import pillihuaman.com.base.request.ReqBase;
+import pillihuaman.com.base.request.ReqImagenByProduct;
+import pillihuaman.com.base.request.ReqProduct;
+import pillihuaman.com.base.response.CorouselImage;
 import pillihuaman.com.base.response.RespBase;
 import pillihuaman.com.base.response.RespImagenGeneral;
+import pillihuaman.com.base.response.RespProduct;
+import pillihuaman.com.basebd.imagen.domain.Imagen;
 import pillihuaman.com.security.MyJsonWebToken;
 
 import javax.servlet.http.HttpServletRequest;
-
+import javax.validation.Valid;
 import javax.ws.rs.QueryParam;
 import java.util.List;
 
@@ -57,6 +60,37 @@ public class ImagenController {
         RespBase<List<RespImagenGeneral>> response = imagenService.getTopImagen(page,perPage);
         return ResponseEntity.ok(response);
     }
+    @Operation(summary = "get top imagen", description = "get top imagen", tags = {""}, security = {
+            @SecurityRequirement(name = Constants.BEARER_JWT)})
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = Constants.SERVER_200, description = Constants.OPERACION_EXITOSA),
+            @ApiResponse(responseCode = Constants.SERVER_400, description = Constants.ERROR_VALIDACION, content = {
+                    @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))}),
+            @ApiResponse(responseCode = Constants.SERVER_500, description = Constants.ERROR_INTERNO, content = {
+                    @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))})})
+    @PostMapping(path = {Constants.BASE_ENDPOINT + "/save/saveClickCountImagen"}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<Boolean> saveClickCountImagen( @RequestBody CorouselImage corouselImage) {
 
+        MyJsonWebToken jwt = (MyJsonWebToken) httpServletRequest.getAttribute("jwt");
+        Boolean response = imagenService.saveClickCountImagen(corouselImage);
+        return ResponseEntity.ok(response);
+    }
+    @Operation(summary = "SAVE IMAGE by product", description = "SAVE IMAGE by product", tags = { "" }, security = {
+            @SecurityRequirement(name = Constants.BEARER_JWT) })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = Constants.SERVER_200, description = Constants.OPERACION_EXITOSA),
+            @ApiResponse(responseCode = Constants.SERVER_400, description = Constants.ERROR_VALIDACION, content = {
+                    @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))}),
+            @ApiResponse(responseCode = Constants.SERVER_500, description = Constants.ERROR_INTERNO, content = {
+                    @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))}) })
+    @PostMapping(path = { Constants.BASE_ENDPOINT + "/imagen/saveImagenByProduct" }, produces = {MediaType.APPLICATION_JSON_VALUE })
+    public ResponseEntity<Boolean> saveImagenByProduct(
+            @PathVariable String access,
+            @Valid @RequestBody ReqImagenByProduct request) throws Exception {
+
+        MyJsonWebToken jwt = (MyJsonWebToken) httpServletRequest.getAttribute("jwt");
+        Boolean response = imagenService.saveImagenByProduct( jwt,request);
+        return ResponseEntity.ok(response);
+    }
 
 }

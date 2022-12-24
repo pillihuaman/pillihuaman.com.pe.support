@@ -6,6 +6,10 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/annotations"/>
         <property name="java-output-path" value="/pillihuamanSupport/target/classes"/>
+<<<<<<< HEAD
         <property name="context-root" value="pillihuaman-search-app"/>
+=======
+        <property name="context-root" value="pillihuaman-support-app"/>
+>>>>>>> 6c47237f766910997e38afb396365802c6bdeaa4
     </wb-module>
 </project-modules>
