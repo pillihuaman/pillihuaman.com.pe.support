@@ -114,22 +114,22 @@ public class ImagenServiceImpl implements ImagenService {
 
 
             imgg.setAuditEntity(au);
-            List<Imagen> lss=  imagenSupportDAO.getCorrelativeImagen(imgg);
-            int idImgan=0;
-             if(!lss.isEmpty()) {
-                 imgg.setIdHeadImagen(lss.get(0).getIdHeadImagen()+1);
-                 idImgan=lss.get(0).getIdHeadImagen()+1;
-             }else {
-                 imgg.setIdHeadImagen(1);
-                 idImgan=1;
-             }
+            List<Imagen> lss = imagenSupportDAO.getCorrelativeImagen(imgg);
+            int idImgan = 0;
+            if (!lss.isEmpty()) {
+                imgg.setIdHeadImagen(lss.get(0).getIdHeadImagen() + 1);
+                idImgan = lss.get(0).getIdHeadImagen() + 1;
+            } else {
+                imgg.setIdHeadImagen(1);
+                idImgan = 1;
+            }
 
             Document doc = imagenSupportDAO.saveImagenHeader(imgg);
             String docDetail = doc.get("_id").toString();
             DetailImage det = new DetailImage();
             List<Imagen> i = imagenSupportDAO.getCorrelativeImagen(null);
 
-int count=0;
+            int count = 0;
             for (ImagenDetail c : imFile.getListImagen()
             ) {
                 det.setIdImagen(idImgan);

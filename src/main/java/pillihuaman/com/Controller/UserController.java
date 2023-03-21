@@ -42,7 +42,7 @@ public class UserController {
 					@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))}),
 			@ApiResponse(responseCode = Constants.SERVER_500, description = Constants.ERROR_INTERNO, content = {
 					@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))}) })
-	@PostMapping(path = { Constants.BASE_ENDPOINT + "/user/saveUser" }, produces = {MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(path = { Constants.BASE_ENDPOINT + "/user/register" }, produces = {MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<RespBase<RespUser>> saveUser(
 			@PathVariable String access,
 			@Valid @RequestBody ReqBase<ReqUser> request){

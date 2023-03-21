@@ -61,10 +61,10 @@ public class UserServiceImpl implements UserService {
 			tbl.setPassword(codeString);
 			List<User> list = userDaoImplement.findLastUser();
 			if (list != null && list.size() > 0) {
-				tbl.setId_user(list.get(0).getId_user() + 1);
+				//tbl.setId_user(list.get(0).getId_user() + 1);
 				userDaoImplement.saveUser(tbl);
 			} else {
-				tbl.setId_user(1);
+				//tbl.setId_user(1);
 				userDaoImplement.saveUser(tbl);
 			}
 

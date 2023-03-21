@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.*;
 import pillihuaman.com.Help.Constants;
 import pillihuaman.com.Service.ProductService;
 import pillihuaman.com.base.request.ReqBase;
+import pillihuaman.com.base.request.ReqImagenByProduct;
 import pillihuaman.com.base.request.ReqProduct;
+import pillihuaman.com.base.request.ReqStock;
 import pillihuaman.com.base.response.RespBase;
 import pillihuaman.com.base.response.RespProduct;
+import pillihuaman.com.base.response.ResponseStock;
 import pillihuaman.com.security.MyJsonWebToken;
 
 import javax.servlet.http.HttpServletRequest;
@@ -88,7 +91,23 @@ public class ProductController {
 		return ResponseEntity.ok(response);
 	}
 
+	@Operation(summary = "SAVE STOCK", description = "SAVE STOCK", tags = { "" }, security = {
+			@SecurityRequirement(name = Constants.BEARER_JWT) })
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = Constants.SERVER_200, description = Constants.OPERACION_EXITOSA),
+			@ApiResponse(responseCode = Constants.SERVER_400, description = Constants.ERROR_VALIDACION, content = {
+					@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))}),
+			@ApiResponse(responseCode = Constants.SERVER_500, description = Constants.ERROR_INTERNO, content = {
+					@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))}) })
+	@PostMapping(path = { Constants.BASE_ENDPOINT + "/product/saveStock" }, produces = {MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<ResponseStock> saveStock(
+			@PathVariable String access,
+			@Valid @RequestBody ReqBase<ReqStock> request) throws Exception {
 
+		MyJsonWebToken jwt = (MyJsonWebToken) httpServletRequest.getAttribute("jwt");
+		ResponseStock response = productService.saveStock( jwt,request).getPayload();
+		return ResponseEntity.ok(response);
+	}
 
 
 	    
