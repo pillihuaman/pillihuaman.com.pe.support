@@ -44,7 +44,7 @@ public class ProductController {
 					@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))}),
 			@ApiResponse(responseCode = Constants.SERVER_500, description = Constants.ERROR_INTERNO, content = {
 					@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))}) })
-	@PostMapping(path = { Constants.BASE_ENDPOINT + "/Product/SaveProduct" }, produces = {MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(path = { Constants.BASE_ENDPOINT + "/product/saveProduct" }, produces = {MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<RespBase<RespProduct>> SaveProduct(
 			@PathVariable String access,
 			@Valid @RequestBody ReqBase<ReqProduct> request){

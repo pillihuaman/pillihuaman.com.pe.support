@@ -44,10 +44,10 @@ public class ProductServiceImpl implements ProductService {
 			request.getData();
 			Product tblproduct = new Product();
 			tblproduct = ConvertClass.ProductDtoToProductTbl(request.getData());
-			tblproduct.setIdProduct(new ObjectId());
+			//tblproduct.setIdProduct(new ObjectId());
 
-			List<Product> list = productSupportDAO
-					.getCorrelativeProduct(new Product());
+			//List<Product> list = productSupportDAO
+			//		.getCorrelativeProduct(new Product());
 			productSupportDAO.SaveProduct(tblproduct);
 			/*if (list != null && list.size() > 0) {
 				tblproduct.setIdProduct(list.get(0).getIdProduct() + 1);
@@ -110,7 +110,7 @@ public class ProductServiceImpl implements ProductService {
 			// Created with NoSQLBooster, the essential IDE for MongoDB -
 			// https://nosqlbooster.com
 			Document query = new Document();
-			query.append("idProduct", tblproduct.getIdProduct());
+			//query.append("idProduct", tblproduct.getIdProduct());
 			query.append("description", tblproduct.getDescription());
 			query.append("idImagen", tblproduct.getIdImagen());
 			query.append("name", tblproduct.getName());
