@@ -102,7 +102,7 @@ public class ImagenServiceImpl implements ImagenService {
         try {
             booleans = false;
             Imagen imgg = new Imagen();
-            imgg.setIdProduct(imFile.getIdProduct());
+            imgg.setIdProduct(imFile.getIdProduct().toString());
             imgg.setName(imFile.getName());
             imgg.setDescription(imFile.getDescription());
             imgg.setClickCount(0);
@@ -147,7 +147,7 @@ public class ImagenServiceImpl implements ImagenService {
                     audet.setFecRegis(new Date());
                     imgg.setAuditEntity(au);
                     imgg.setAuditEntity(audet);
-                    det.setIdDetail(new ObjectId(docDetail));
+                    det.setIdDetail(docDetail);
                     det.setFiles(decodedBytes);
                     det.setIndex(count);
                     imagenSupportDAO.saveImagenFile(det);

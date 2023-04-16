@@ -1,12 +1,10 @@
 package pillihuaman.com.security;
 
-import lombok.Getter;
 import org.jboss.resteasy.jwt.JsonWebToken;
 
 import java.io.Serializable;
 
-@SuppressWarnings("serial")
-@Getter
+
 public class MyJsonWebToken extends JsonWebToken implements Serializable{
 	
 	private static long serialVersionUID = 1L;
@@ -27,7 +25,7 @@ public class MyJsonWebToken extends JsonWebToken implements Serializable{
 
 
 
-	@Getter
+
 	public static class User {
 
 		private Long idUser;
@@ -37,7 +35,7 @@ public class MyJsonWebToken extends JsonWebToken implements Serializable{
 	}
 
 
-	@Getter
+
 	public static class Aplication {
 
 		private Long aplicationID;
