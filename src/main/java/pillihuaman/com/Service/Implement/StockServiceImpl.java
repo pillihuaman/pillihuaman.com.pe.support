@@ -11,7 +11,7 @@ import org.apache.commons.logging.LogFactory;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pillihuaman.com.Service.ProductService;
+import pillihuaman.com.Service.StockService;
 import pillihuaman.com.base.request.ReqBase;
 import pillihuaman.com.base.request.ReqProduct;
 import pillihuaman.com.base.request.ReqStock;
@@ -28,7 +28,7 @@ import pillihuaman.com.security.MyJsonWebToken;
 import java.util.List;
 
 @Component
-public class ProductServiceImpl implements ProductService {
+public class StockServiceImpl implements StockService {
 	@Autowired
 	private ProductSupportDAO productSupportDAO;
 	@Autowired

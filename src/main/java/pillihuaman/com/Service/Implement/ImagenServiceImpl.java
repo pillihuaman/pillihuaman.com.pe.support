@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pillihuaman.com.Service.ImagenService;
 import pillihuaman.com.base.request.ImagenDetail;
-import pillihuaman.com.base.request.ReqBase;
 import pillihuaman.com.base.request.ReqImagenByProduct;
 import pillihuaman.com.base.response.CorouselImage;
 import pillihuaman.com.base.response.RespBase;
@@ -109,8 +108,8 @@ public class ImagenServiceImpl implements ImagenService {
             imgg.setCountRanking(0);
             imgg.setIdSystem(1);
             AuditEntity au = new AuditEntity();
-            au.setCodUsuRegis("ZPH");
-            au.setFecRegis(new Date());
+            au.setCodUser(imFile.getCodUser());
+            au.setDateRegister(new Date());
 
 
             imgg.setAuditEntity(au);
@@ -143,11 +142,11 @@ public class ImagenServiceImpl implements ImagenService {
                     String[] seconSpli = spli[1].split(",");
                     byte[] decodedBytes = Base64.getDecoder().decode(seconSpli[1]);
                     AuditEntity audet = new AuditEntity();
-                    audet.setCodUsuRegis("ZPH");
-                    audet.setFecRegis(new Date());
+                    au.setCodUser(new ObjectId());
+                    au.setDateRegister(new Date());
                     imgg.setAuditEntity(au);
                     imgg.setAuditEntity(audet);
-                    det.setIdDetail(docDetail);
+                    det.setIdDetail(new ObjectId( docDetail));
                     det.setFiles(decodedBytes);
                     det.setIndex(count);
                     imagenSupportDAO.saveImagenFile(det);
