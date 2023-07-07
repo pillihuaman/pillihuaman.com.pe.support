@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import pillihuaman.com.Help.Constants;
 import pillihuaman.com.Service.UserService;
+import pillihuaman.com.base.commons.MyJsonWebToken;
 import pillihuaman.com.base.request.ReqBase;
 import pillihuaman.com.base.request.ReqUser;
 import pillihuaman.com.base.response.RespBase;
 import pillihuaman.com.base.response.RespUser;
-import pillihuaman.com.security.MyJsonWebToken;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;

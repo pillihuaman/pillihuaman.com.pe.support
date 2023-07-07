@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.InstantSerializer;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import pillihuaman.com.base.commons.MyJsonWebToken;
 import pillihuaman.com.base.response.RespBase;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +43,7 @@ public class AuditEndpointInterceptor extends HandlerInterceptorAdapter {
 			if (handler instanceof HandlerMethod) {
 				String loggedUser = ANONIMO;
 				String loggedApplicationName = ANONIMO;
-				pillihuaman.com.security.MyJsonWebToken jwt = (pillihuaman.com.security.MyJsonWebToken) servletRequest.getAttribute("jwt");
+				MyJsonWebToken jwt = (MyJsonWebToken) servletRequest.getAttribute("jwt");
 				if (jwt != null) {
 					//loggedUser = jwt.getUsuario().getUsuario();
 					//loggedApplicationName = jwt.getAplicacion().getNombre();

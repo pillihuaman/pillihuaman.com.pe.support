@@ -14,18 +14,21 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pillihuaman.com.Service.ParameterService;
+import pillihuaman.com.base.commons.MyJsonWebToken;
+import pillihuaman.com.base.request.ReqBase;
 import pillihuaman.com.base.request.ReqParameter;
 import pillihuaman.com.base.response.RespBase;
 import pillihuaman.com.base.response.ResponseParameter;
 import pillihuaman.com.basebd.help.Constants;
-import pillihuaman.com.security.MyJsonWebToken;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
 @Tag(name = "Imagen", description = "")
-@RequestMapping("parameter/")
+//@RequestMapping("parameter/")
 
 public class ParameterController {
     @Autowired
@@ -43,13 +46,36 @@ public class ParameterController {
                     @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))}),
             @ApiResponse(responseCode = Constants.SERVER_500, description = Constants.ERROR_INTERNO, content = {
                     @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))})})
-    @PostMapping(path = {Constants.BASE_ENDPOINT + "saveParameter"}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @PostMapping(path = {Constants.BASE_ENDPOINT + "/saveParameter"}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<RespBase<ResponseParameter>> saveParameter(
-            @PathVariable String access,
-            @RequestBody ReqParameter request) throws Exception {
+           @PathVariable String access,
+           @RequestBody ReqBase<ReqParameter> request ) throws Exception {
 
         MyJsonWebToken jwt = (MyJsonWebToken) httpServletRequest.getAttribute("jwt");
-        RespBase<ResponseParameter>  response = parameterService.SaveParameter(jwt, request);
+        RespBase<ResponseParameter>  response = parameterService.SaveParameter(jwt, request.getData());
+        return ResponseEntity.ok(response);
+    }
+
+    @Operation(summary = "Create product", description = " parameter getParameterbyIdCode", tags = { "" }, security = {
+            @SecurityRequirement(name = pillihuaman.com.Help.Constants.BEARER_JWT) })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = pillihuaman.com.Help.Constants.SERVER_200, description = pillihuaman.com.Help.Constants.OPERACION_EXITOSA),
+            @ApiResponse(responseCode = pillihuaman.com.Help.Constants.SERVER_400, description = pillihuaman.com.Help.Constants.ERROR_VALIDACION, content = {
+                    @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))}),
+            @ApiResponse(responseCode = pillihuaman.com.Help.Constants.SERVER_500, description = pillihuaman.com.Help.Constants.ERROR_INTERNO, content = {
+                    @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))}) })
+    @GetMapping(path = { pillihuaman.com.Help.Constants.BASE_ENDPOINT + "/getParameterbyIdCode/idCode" }, produces = {MediaType.APPLICATION_JSON_VALUE })
+
+    public ResponseEntity<RespBase<List<ResponseParameter>>> getParameterbyIdCode(
+            @PathVariable String access,
+            @Valid @RequestParam("idCode") String  idCode ) throws Exception {
+        ReqBase<ReqParameter> request=new ReqBase<>();
+        ReqParameter re= new ReqParameter();
+        re.setIdCode(idCode);
+        request.setData(re);
+        MyJsonWebToken jwt = (MyJsonWebToken) httpServletRequest.getAttribute("jwt");
+
+        RespBase<List<ResponseParameter>>  response = parameterService.getParameterbyIdCode(jwt, request.getData());
         return ResponseEntity.ok(response);
     }
 

@@ -13,11 +13,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pillihuaman.com.Help.Constants;
 import pillihuaman.com.Service.ProductService;
+import pillihuaman.com.base.commons.MyJsonWebToken;
 import pillihuaman.com.base.request.ReqBase;
 import pillihuaman.com.base.request.ReqProduct;
 import pillihuaman.com.base.response.RespBase;
 import pillihuaman.com.base.response.RespProduct;
-import pillihuaman.com.security.MyJsonWebToken;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;

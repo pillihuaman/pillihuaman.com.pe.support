@@ -12,6 +12,7 @@ import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pillihuaman.com.Service.StockService;
+import pillihuaman.com.base.commons.MyJsonWebToken;
 import pillihuaman.com.base.request.ReqBase;
 import pillihuaman.com.base.request.ReqProduct;
 import pillihuaman.com.base.request.ReqStock;
@@ -23,7 +24,6 @@ import pillihuaman.com.basebd.help.ConvertClass;
 import pillihuaman.com.basebd.product.domain.Product;
 import pillihuaman.com.basebd.product.domain.dao.ProductSupportDAO;
 import pillihuaman.com.basebd.product.domain.dao.StockSupportDAO;
-import pillihuaman.com.security.MyJsonWebToken;
 
 import java.util.List;
 
@@ -43,28 +43,13 @@ public class StockServiceImpl implements StockService {
 			request.getData();
 			Product tblproduct = new Product();
 			tblproduct = ConvertClass.ProductDtoToProductTbl(request.getData());
-			//tblproduct.setIdProduct(new ObjectId());
-
-			//List<Product> list = productSupportDAO
-			//		.getCorrelativeProduct(new Product());
 			productSupportDAO.SaveProduct(tblproduct);
-			/*if (list != null && list.size() > 0) {
-				tblproduct.setIdProduct(list.get(0).getIdProduct() + 1);
-				productSupportDAO.SaveProduct(tblproduct);
-			} else {
-				tblproduct.setIdProduct(1);
-				productSupportDAO.SaveProduct(tblproduct);
-			}*/
-
 			response.getStatus().setSuccess(Boolean.TRUE);
 			response.setPayload(new RespProduct());
 		} catch (Exception e) {
 
-
 			response.getStatus().setSuccess(Boolean.FALSE);
 			throw e;
-
-			// response.getStatus().getError().getMessages().add(e.getMessage());
 		}
 
 		return response;

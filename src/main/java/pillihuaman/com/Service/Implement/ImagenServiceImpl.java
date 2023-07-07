@@ -7,21 +7,23 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pillihuaman.com.Service.ImagenService;
+import pillihuaman.com.base.commons.MyJsonWebToken;
+import pillihuaman.com.base.request.CorouselImage;
 import pillihuaman.com.base.request.ImagenDetail;
 import pillihuaman.com.base.request.ReqImagenByProduct;
-import pillihuaman.com.base.response.CorouselImage;
 import pillihuaman.com.base.response.RespBase;
 import pillihuaman.com.base.response.RespImagenGeneral;
-import pillihuaman.com.basebd.help.AuditEntity;
 import pillihuaman.com.basebd.help.ConvertClass;
 import pillihuaman.com.basebd.imagen.domain.DetailImage;
 import pillihuaman.com.basebd.imagen.domain.Imagen;
 import pillihuaman.com.basebd.imagen.domain.dao.ImagenSupportDAO;
 import pillihuaman.com.basebd.imagenProducer.domain.ImagenFile;
 import pillihuaman.com.basebd.imagenProducer.domain.dao.ImagenProducerDAO;
-import pillihuaman.com.security.MyJsonWebToken;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
+import java.util.UUID;
 
 ;
 
@@ -107,12 +109,6 @@ public class ImagenServiceImpl implements ImagenService {
             imgg.setClickCount(0);
             imgg.setCountRanking(0);
             imgg.setIdSystem(1);
-            AuditEntity au = new AuditEntity();
-            au.setCodUser(imFile.getCodUser());
-            au.setDateRegister(new Date());
-
-
-            imgg.setAuditEntity(au);
             List<Imagen> lss = imagenSupportDAO.getCorrelativeImagen(imgg);
             int idImgan = 0;
             if (!lss.isEmpty()) {
@@ -141,12 +137,7 @@ public class ImagenServiceImpl implements ImagenService {
                     String[] spli = c.getValue().split(":");
                     String[] seconSpli = spli[1].split(",");
                     byte[] decodedBytes = Base64.getDecoder().decode(seconSpli[1]);
-                    AuditEntity audet = new AuditEntity();
-                    au.setCodUser(new ObjectId());
-                    au.setDateRegister(new Date());
-                    imgg.setAuditEntity(au);
-                    imgg.setAuditEntity(audet);
-                    det.setIdDetail(new ObjectId( docDetail));
+                    //det.setIdDetail(new ObjectId());
                     det.setFiles(decodedBytes);
                     det.setIndex(count);
                     imagenSupportDAO.saveImagenFile(det);
