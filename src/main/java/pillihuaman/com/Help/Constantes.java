@@ -14,7 +14,7 @@ public static final String CONSULTA_PERSONAS_POR_DOCUMENTO = "CONSULTA PERSONAS 
 		super();
 	}
 
-	public static final String OPERACION_EXITOSA = "operaci�n exitosa";
+	public static final String SUCCESS_CREATED = "was created success";
 	
 	public static final String ERROR_VALIDACION = "error de validaci�n";
 	

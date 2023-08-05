@@ -47,14 +47,15 @@ public class ParameterController {
             @ApiResponse(responseCode = Constants.SERVER_500, description = Constants.ERROR_INTERNO, content = {
                     @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RespBase.class))})})
     @PostMapping(path = {Constants.BASE_ENDPOINT + "/saveParameter"}, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<RespBase<ResponseParameter>> saveParameter(
+    public ResponseEntity<Object> saveParameter(
            @PathVariable String access,
            @RequestBody ReqBase<ReqParameter> request ) throws Exception {
 
         MyJsonWebToken jwt = (MyJsonWebToken) httpServletRequest.getAttribute("jwt");
-        RespBase<ResponseParameter>  response = parameterService.SaveParameter(jwt, request.getData());
-        return ResponseEntity.ok(response);
-    }
+       ResponseEntity<Object>  response = parameterService.SaveParameter(jwt, request.getData());
+       return new ResponseEntity<>(response, response.getStatusCode());
+
+   }
 
     @Operation(summary = "Create product", description = " parameter getParameterbyIdCode", tags = { "" }, security = {
             @SecurityRequirement(name = pillihuaman.com.Help.Constants.BEARER_JWT) })

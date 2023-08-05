@@ -8,10 +8,12 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerA
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import pillihuaman.com.exception.CustomRestExceptionHandlerGeneric;
 
 import java.util.Collections;
 
@@ -22,9 +24,8 @@ import java.util.Collections;
 @EnableFeignClients
 @EnableAutoConfiguration(exclude = { ErrorMvcAutoConfiguration.class })
 @EnableScheduling
-
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class})
-
+@Import(CustomRestExceptionHandlerGeneric.class)
 public class Application    {
 
 	
