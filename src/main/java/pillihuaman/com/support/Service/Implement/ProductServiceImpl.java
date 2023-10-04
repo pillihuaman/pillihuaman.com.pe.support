@@ -16,7 +16,7 @@ import pillihuaman.com.basebd.product.dao.StockSupportDAO;
 import pillihuaman.com.support.Service.ProductService;
 
 import pillihuaman.com.basebd.common.ProductStock;
-import pillihuaman.com.lib.commons.MyJsonWebToken;
+import pillihuaman.com.basebd.common.MyJsonWebToken;
 import pillihuaman.com.lib.request.ReqBase;
 import pillihuaman.com.lib.request.ReqProduct;
 import pillihuaman.com.lib.request.ReqStock;

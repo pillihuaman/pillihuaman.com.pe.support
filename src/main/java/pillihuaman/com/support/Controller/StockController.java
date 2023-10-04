@@ -10,7 +10,7 @@ import pillihuaman.com.lib.request.ReqProduct;
 import pillihuaman.com.lib.response.RespProduct;
 import pillihuaman.com.support.Help.Constants;
 import pillihuaman.com.support.Service.ProductService;
-import pillihuaman.com.lib.commons.MyJsonWebToken;
+import pillihuaman.com.basebd.common.MyJsonWebToken;
 import jakarta.validation.Valid;
 import pillihuaman.com.lib.request.ReqBase;
 import pillihuaman.com.lib.request.ReqUser;

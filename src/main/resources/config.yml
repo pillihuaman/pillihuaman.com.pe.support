@@ -28,6 +28,7 @@ mongodb:
         - "pillihuaman.com.basebd.config"
         - "pillihuaman.com.basebd"
         - "pillihuaman.com.basebd.user"
+        - "pillihuaman.com.security"
 
 # Application Configuration
 application:
@@ -50,4 +51,7 @@ logging:
 # Add your custom configurations here as needed.
 spring:
   component-scan:
-    base-packages: pillihuaman.com.basebd
+    base-packages: pillihuaman.com.basebd,pillihuaman.com.security
+external-api:
+  url: http://localhost:8085/api/v1/auth
+logging.level.org.springframework.data.mongodb.core.MongoTemplate: DEBUG

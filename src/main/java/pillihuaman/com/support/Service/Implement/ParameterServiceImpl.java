@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import pillihuaman.com.basebd.parameter.Parameter;
 import pillihuaman.com.basebd.parameter.dao.implement.ParameterDaoImplement;
-import pillihuaman.com.lib.commons.MyJsonWebToken;
+import pillihuaman.com.basebd.common.MyJsonWebToken;
 import pillihuaman.com.lib.request.ReqParameter;
 import pillihuaman.com.lib.response.RespBase;
 import pillihuaman.com.lib.response.ResponseParameter;
@@ -33,25 +33,23 @@ public class ParameterServiceImpl implements ParameterService {
     public ResponseEntity<Object> SaveParameter(MyJsonWebToken token, ReqParameter request) {
         RespBase<ResponseParameter> response = new RespBase<ResponseParameter>();
 
-            ModelMapper modelMapper = new ModelMapper();
-            Parameter para = modelMapper.map(request, Parameter.class);
-            String name = "";
-            if (!MaestrosUtilidades.isEmpty(request)) {
-                if (!MaestrosUtilidades.isEmpty(request.getName())) {
-                    name = request.getName().toUpperCase().trim();
-                    List<Parameter> ls = parameterDaoImplement.getParameterByName(name);
-                    if (ls.isEmpty()) {
-                        para.setName(name);
-                        parameterDaoImplement.saveParemeter(para, token);
-                        String successMessage = "Resource created successfully";
-
-
-                    } else {
-                        String errorMessage = "Parameter with name '" + name + "' already exists.";
-                        return null;
-                    }
+        ModelMapper modelMapper = new ModelMapper();
+        Parameter para = modelMapper.map(request, Parameter.class);
+        String name = "";
+        if (!MaestrosUtilidades.isEmpty(request)) {
+            if (!MaestrosUtilidades.isEmpty(request.getName())) {
+                name = request.getName().toUpperCase().trim();
+                List<Parameter> ls = parameterDaoImplement.getParameterByName(name);
+                if (ls.isEmpty()) {
+                    para.setName(name);
+                    parameterDaoImplement.saveParemeter(para, token);
+                    String successMessage = "Resource created successfully";
+                } else {
+                    String errorMessage = "Parameter with name '" + name + "' already exists.";
+                    return null;
                 }
             }
+        }
 
         return null;
     }
@@ -72,8 +70,8 @@ public class ParameterServiceImpl implements ParameterService {
             lst.setPayload(lstres);
             return lst;
         } catch (Exception e) {
-            int d=1/0;
-            log.error(e +" ParameterServiceImpl ");
+            int d = 1 / 0;
+            log.error(e + " ParameterServiceImpl ");
             throw new RuntimeException(e);
         }
 

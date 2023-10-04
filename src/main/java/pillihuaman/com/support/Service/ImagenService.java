@@ -1,5 +1,5 @@
 package pillihuaman.com.support.Service;
-import pillihuaman.com.lib.commons.MyJsonWebToken;
+import pillihuaman.com.basebd.common.MyJsonWebToken;
 import jakarta.validation.Valid;
 import pillihuaman.com.lib.request.CorouselImage;
 import pillihuaman.com.lib.request.ReqBase;

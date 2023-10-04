@@ -22,7 +22,10 @@ import java.util.Collections;
 @EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
 @EnableScheduling
 @Import(CustomRestExceptionHandlerGeneric.class)
-@SpringBootApplication(scanBasePackages = {"pillihuaman.com.basebd.config", "pillihuaman.com.basebd","pillihuaman.com.security","pillihuaman.com.support"})
+@SpringBootApplication(scanBasePackages = {"pillihuaman.com.lib","pillihuaman.com.basebd.config",
+        "pillihuaman.com.basebd","pillihuaman.com.security.auth","pillihuaman.com.security",
+        "pillihuaman.com.support"
+})
 public class Application {
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(Application.class);

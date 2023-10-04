@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import pillihuaman.com.basebd.product.Product;
 import pillihuaman.com.basebd.product.dao.ProductSupportDAO;
 import pillihuaman.com.basebd.product.dao.StockSupportDAO;
-import pillihuaman.com.lib.commons.MyJsonWebToken;
+import pillihuaman.com.basebd.common.MyJsonWebToken;
 import pillihuaman.com.lib.request.ReqBase;
 import pillihuaman.com.lib.request.ReqProduct;
 import pillihuaman.com.lib.request.ReqStock;

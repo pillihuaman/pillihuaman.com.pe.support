@@ -180,5 +180,6 @@ public class Constants {
 	public static final String COLLECTION_IMAGEN = "imagen";
 	public static final String COLLECTION_IMAGEN_DETAIL = "imagenDetail";
 	public static final String COLLECTION_IMAGEN_FILES = "files";
+	public static final  String API_URL_ACCESS_MYWEBTOKEN_INFO = "/getUserByToken?request=";
 	}
 
