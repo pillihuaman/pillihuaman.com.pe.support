@@ -59,22 +59,17 @@
         <!-- Libreria utilitaria para generar y validar JWTs -->
         <dependency>
             <groupId>pillihuaman.com.pe</groupId>
-            <artifactId>pillihuaman-com-lib</artifactId>
+            <artifactId>pillihuaman.com.pe.lib</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>pillihuaman.com.pe</groupId>
-            <artifactId>pillihuaman-com-basebd</artifactId>
+            <artifactId>pillihuaman.com.pe.basebd</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>pillihuaman.com.pe</groupId>
-            <artifactId>pillihuaman-com-security</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
+
         <!-- NoClassDefFoundError: javax/xml/bind/DatatypeConverter] with root cause -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
@@ -159,10 +154,23 @@
             <artifactId>swagger-models-jakarta</artifactId>
             <version>2.2.9</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor -->
         <dependency>
             <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-            <version>1.5.5.Final</version>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>1.6.3</version>
+        </dependency>
+        <dependency>
+            <groupId>pillihuaman.com.pe</groupId>
+            <artifactId>pillihuaman.com.pe.lib.security</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.2.0</version>
         </dependency>
 
     </dependencies>
@@ -180,9 +188,9 @@
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
-                                <groupId>org.mapstruct</groupId>
-                                <artifactId>mapstruct-processor</artifactId>
-                                <version>1.5.5.Final</version>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>1.6.3</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>

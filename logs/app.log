@@ -3832,7 +3832,7 @@ antlr.NoViableAltException: unexpected token: *
 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
-	at pillihuaman.com.support.Application.main(Application.java:29) [classes/:?]
+	at pillihuaman.com.pe.support.Application.main(Application.java:29) [classes/:?]
 2021-10-31 21:54:10,971 ERROR o.h.h.i.a.ErrorCounter [main] line 1:8: unexpected token: *
 2021-10-31 21:54:10,984 ERROR o.h.h.i.a.ErrorCounter [main] line 1:8: unexpected token: *
 antlr.NoViableAltException: unexpected token: *
@@ -3906,7 +3906,7 @@ antlr.NoViableAltException: unexpected token: *
 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
-	at pillihuaman.com.support.Application.main(Application.java:29) [classes/:?]
+	at pillihuaman.com.pe.support.Application.main(Application.java:29) [classes/:?]
 2021-10-31 21:57:22,028 ERROR o.h.h.i.a.ErrorCounter [main] line 1:8: unexpected token: *
 2021-10-31 21:57:22,037 ERROR o.h.h.i.a.ErrorCounter [main] line 1:8: unexpected token: *
 antlr.NoViableAltException: unexpected token: *
@@ -3980,7 +3980,7 @@ antlr.NoViableAltException: unexpected token: *
 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
-	at pillihuaman.com.support.Application.main(Application.java:29) [classes/:?]
+	at pillihuaman.com.pe.support.Application.main(Application.java:29) [classes/:?]
 2021-10-31 22:01:35,876 ERROR o.h.h.i.a.ErrorCounter [main] line 1:8: unexpected token: *
 2021-10-31 22:01:35,886 ERROR o.h.h.i.a.ErrorCounter [main] line 1:8: unexpected token: *
 antlr.NoViableAltException: unexpected token: *
@@ -4054,7 +4054,7 @@ antlr.NoViableAltException: unexpected token: *
 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
-	at pillihuaman.com.support.Application.main(Application.java:29) [classes/:?]
+	at pillihuaman.com.pe.support.Application.main(Application.java:29) [classes/:?]
 2021-10-31 22:12:13,135 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8088-exec-1] Unknown column 'c' in 'field list'
 2021-10-31 22:16:40,783 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8088-exec-1] Unknown column 'c' in 'field list'
 2021-10-31 22:31:39,054 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8088-exec-1] Unknown column 'c' in 'field list'
